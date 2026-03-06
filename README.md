@@ -56,14 +56,14 @@ git clone https://github.com/你的用户名/你的仓库名.git .cursor/skills/
 design-system-index/     # 设计规范索引 skill
 ├── SKILL.md             # 入口与指引（name、description、场景速查）
 ├── references/          # 子规范文档（按需加载）
-│   ├── 色彩系统.md
-│   ├── 字体与字号系统.md
-│   ├── 布局与栅格系统.md
-│   ├── 间距与尺寸系统.md
-│   ├── 组件库规范.md
-│   ├── 图标使用规范.md
-│   ├── 表单页面规范.md
-│   └── 输入模板.md
+│   ├── color-tokens.md
+│   ├── typography.md
+│   ├── layout-grid.md
+│   ├── spacing-scale.md
+│   ├── components.md
+│   ├── icons.md
+│   ├── forms.md
+│   └── input-templates.md
 ├── evals/
 │   ├── evals.json       # 评测用例
 │   └── run.js           # 列出 prompt 便于手动测试
