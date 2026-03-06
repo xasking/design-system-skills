@@ -1,0 +1,41 @@
+{
+  "skill_name": "design-system-index",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "请根据我们项目的设计规范，给一个「登录页」的布局与组件描述：主标题、账号/密码输入框、主按钮和次要链接的层级与间距，并注明所用色彩和字体的 token（如主文本、主按钮色）。",
+      "expected_output": "输出包含布局结构、组件层级、间距与色彩/字体 token 的说明，且明确引用设计系统（如色彩系统、间距与尺寸系统、组件库规范）。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我有一份 Figma 设计稿链接：https://figma.com/design/xxxx/yyy?node-id=1-2，请帮我校验这份设计稿是否符合我们项目的设计规范，重点看色彩和主文本/按钮是否合规。",
+      "expected_output": "按「设计稿规范验证流程」执行：获取设计数据（Figma MCP 或请求截图/色值）、加载 references/色彩系统.md、输出通过项与不符合项（含位置、当前值、规范要求、建议修正）。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "做一个「状态标签」组件的设计说明：成功、警告、错误、信息四种状态，包括背景色、文字色、圆角、内边距，要符合我们设计系统。",
+      "expected_output": "状态色与语义符合 references/色彩系统.md（如成功→Green、警示→Yellow、错误→Red、信息→Blue）；尺寸与圆角符合 references/间距与尺寸系统.md 或 references/组件库规范.md。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "请根据我们项目的设计规范，给一个「无侧导表单」页面的布局与组件说明。要求：应用 Form、Input、Select、Button、Card 组件（从组件库规范中选用），说明单块白色卡片居中、标签在上（labelPosition top）、表单项间距与底部操作栏（主按钮 + 次要按钮）的排布，并引用布局与栅格系统、表单页面规范、组件库规范。",
+      "expected_output": "输出无侧导表单的布局结构（顶部导航 + 单块白卡 720–840px 居中）；明确列出使用的 Form、Input、Select、Button、Card 及在组件库规范中的用法；说明 labelPosition 优先 top、表单项间距 24px、白卡内边距 24px 与圆角 10px；并引用 references/布局与栅格系统.md、references/表单页面规范.md、references/组件库规范.md。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "请根据我们项目的设计规范，给一个「有侧导表格（标题栏为筛选区）」页面的布局与组件说明。要求：应用 Sidenav、Search box、Select、Button、Table、Pagination、Card 组件（从组件库规范中选用），说明左侧导航、右侧白色卡片内标题栏即筛选区（多行筛选项 + 主操作按钮）、表头与数据行、底部分页的结构，并引用布局与栅格系统、组件库规范。",
+      "expected_output": "输出有侧导表格布局结构（顶部导航 + 左侧栏导航 + 右侧白卡）；明确列出 Sidenav、Search box、Select、Button、Table、Pagination、Card 的适用位置与组件库规范中的约定；说明筛选区在标题栏、其下为表头与数据行、底部分页；并引用 references/布局与栅格系统.md、references/组件库规范.md。",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "请根据我们项目的设计规范，给一个「有侧导卡片列表」页面的布局与组件说明。要求：应用 Sidenav、Search box、Button、Card、Pagination、Uploader 组件（从组件库规范中选用），说明左侧导航、右侧白色卡片内标题/搜索栏、上传入口与筛选项、筛选或 Tab 按钮栏、卡片网格列表、底部分页的结构，并引用布局与栅格系统、组件库规范。",
+      "expected_output": "输出有侧导卡片列表布局结构（顶部导航 + 左侧栏 + 右侧白卡）；明确列出 Sidenav、Search box、Button、Card、Pagination、Uploader 的适用位置与组件库规范中的约定；说明标题/搜索栏 → 筛选或 Tab 栏 → 卡片网格 → 分页的自上而下结构；并引用 references/布局与栅格系统.md、references/组件库规范.md。",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "design-system-index-skill",
+  "version": "1.0.0",
+  "description": "设计规范索引 skill 的 evals 脚本",
+  "private": true,
+  "scripts": {
+    "evals": "node evals/run.js"
+  }
+}
