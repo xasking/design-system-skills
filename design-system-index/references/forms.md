@@ -94,9 +94,68 @@
 
 ### 4.1 表单布局
 
-- **布局方式**：`layout="vertical"`，Label 在上、输入在下
+- **布局方式（强约束）**：优先使用上下布局（Label 在上、输入控件在下）。OneUI `Form` 通过 `labelPosition="top"` 设置：
+  ```tsx
+  <Form labelPosition="top">
+    <Form.Field name="fieldName" label="字段名称" required>
+      <Input />
+    </Form.Field>
+  </Form>
+  ```
+  > **注意**：OneUI Form 的上下布局使用 `labelPosition="top"`（而非 `layout="vertical"`）。`layout` 属性控制的是表单项之间的排列方式（`default` / `inline` / `grid`），与 Label 位置无关。
+
+- **OneUI Form API 参数精确指引（本规范使用）**：
+  - `Form.labelPosition="top"`：启用上下布局（强约束，优先使用）
+  - `Form.layout="default"`：常规表单排列；不用于控制 Label 上下位置
+  - `Form.hideRequiredMark={false}`：需要显示必填星号时保持默认 false（若为 true 将隐藏星号）
+  - `Form.Field.required`：为该字段显示必填星号（并参与必填语义）
+  - `Form.Field.label`：支持传入 `ReactNode`，用于插入问号图标与说明触发器
+
 - **表单项间距**：相邻表单项垂直间距 24px（V4）
 - **Label 与输入控件**：8px（V1），详见《间距与尺寸系统》
+
+- **必填星号位置（强约束）**：必填星号（`*`）必须出现在 Label **右侧**（OneUI 默认在左侧）。通过 CSS 将星号从 Label 前移至 Label 后：
+  ```css
+  /* 将必填星号移到 label 右侧 */
+  .one-access-form-field-label label,
+  .one-form-field-label label {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .one-access-form-field-icon-required,
+  .one-form-field-icon-required {
+    margin-right: 0 !important;
+    margin-left: 4px;
+  }
+  ```
+
+- **Label 区域元素排列顺序（强约束）**：当同时出现问号帮助图标和必填星号时，从左到右的顺序为：**Label 文字 → 问号图标 → 必填星号**。实现方式为在 `label` prop 中自定义渲染问号图标，星号由 `required` 属性自动生成并通过上述 CSS 移至右侧：
+  ```tsx
+  import { IconQuestionCircleSolid } from 'dls-icons-react';
+  import { Form, Input, Popover } from '@baidu/one-ui';
+
+  <Form labelPosition="top" layout="default" hideRequiredMark={false}>
+    <Form.Field
+      name="fieldName"
+      required
+      label={
+        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+          字段名称
+          <Popover content="帮助提示文案">
+            <IconQuestionCircleSolid
+              style={{ color: '#B2B9CD', marginLeft: 4, cursor: 'pointer' }}
+            />
+          </Popover>
+        </span>
+      }
+    >
+      <Input placeholder="请输入" />
+    </Form.Field>
+  </Form>
+  {/* 渲染结果排列：字段名称 ❓ * */}
+  ```
 
 ### 4.2 字段类型与组件映射
 
@@ -118,6 +177,33 @@
 - **必填**：`rules={[{ required: true, message: '...' }]}`
 - **自定义校验**：使用 `validator` 处理如「至少选一项」等
 - **帮助说明**：使用 `Tooltip` + 图标（如 `QuestionCircleOutlined`）或副文本（`<Text type="secondary">`）
+- **Label 帮助图标（强约束）**：表单 Label 后面可增加小问号图标，用于补充说明该字段含义或注意事项。
+  - **图标**：使用 `dls-icons-react` 中的 `IconQuestionCircleSolid`
+  - **颜色**：G5（`#B2B9CD`）
+  - **间距**：距离 Label 文字 **4px**
+  - **交互**：hover 图标时弹出 `Popover`，展示提示文案
+  - **与必填星号同时出现时顺序**：`Label文字 → 问号icon → *`（从左到右）
+  - 示例：
+    ```tsx
+    import { IconQuestionCircleSolid } from 'dls-icons-react';
+    import { Form, Input, Popover } from '@baidu/one-ui';
+
+    <Form.Field
+      required
+      label={
+        <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+          字段名称
+          <Popover content="这里是帮助提示文案">
+            <IconQuestionCircleSolid
+              style={{ color: '#B2B9CD', marginLeft: 4, verticalAlign: 'middle', cursor: 'pointer' }}
+            />
+          </Popover>
+        </span>
+      }
+    >
+      <Input />
+    </Form.Field>
+    ```
 - 详见《交互与状态》与《组件库规范》
 
 ### 4.4 字段命名与一致性

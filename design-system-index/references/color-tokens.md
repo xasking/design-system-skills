@@ -82,6 +82,7 @@
 
 | Token           | Hex     |
 | --------------- | ------- |
+| `color-gray-0`  | `#FFFFFF` |
 | `color-gray-1`  | `#EFF0F6` |
 | `color-gray-2`  | `#E4E7F1` |
 | `color-gray-3`  | `#DADEEC` |
@@ -99,6 +100,7 @@
 
 | Token                  | Hex     |
 | ---------------------- | ------- |
+| `color-translucent-0`  | `#FFFFFF` |
 | `color-translucent-1`  | `#EFF0F6` |
 | `color-translucent-2`  | `#E4E7F1` |
 | `color-translucent-3`  | `#DADEEC` |

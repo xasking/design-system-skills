@@ -2,12 +2,6 @@
   "skill_name": "design-system-index",
   "evals": [
     {
-      "id": 1,
-      "prompt": "请根据我们项目的设计规范，给一个「登录页」的布局与组件描述：主标题、账号/密码输入框、主按钮和次要链接的层级与间距，并注明所用色彩和字体的 token（如主文本、主按钮色）。",
-      "expected_output": "输出包含布局结构、组件层级、间距与色彩/字体 token 的说明，且明确引用设计系统（如色彩系统、间距与尺寸系统、组件库规范）。",
-      "files": []
-    },
-    {
       "id": 2,
       "prompt": "我有一份 Figma 设计稿链接：https://figma.com/design/xxxx/yyy?node-id=1-2，请帮我校验这份设计稿是否符合我们项目的设计规范，重点看色彩和主文本/按钮是否合规。",
       "expected_output": "按「设计稿规范验证流程」执行：获取设计数据（Figma MCP 或请求截图/色值）、加载 references/color-tokens.md、输出通过项与不符合项（含位置、当前值、规范要求、建议修正）。",
