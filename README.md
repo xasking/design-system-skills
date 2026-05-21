@@ -1,6 +1,6 @@
 # 设计系统 Skills（Cursor Agent Skills）
 
-本仓库是 **Cursor Agent Skills** 的公共库，供团队在 Cursor 中按设计规范生成界面、校验 Figma 设计稿时使用。
+本仓库是 **Agent Skills** 的公共库，供团队在AI coding 中按设计规范生成界面、校验 Figma 设计稿时使用。
 
 ## 包含的 Skill
 
@@ -20,7 +20,7 @@
    ```bash
    cp -r 你的仓库名/design-system-index 你的项目/.cursor/skills/
    ```
-3. 在 Cursor 中打开你的项目，Agent 会自动识别 `.cursor/skills/` 下的 skill；对话时提到「设计规范」「Figma 校验」等即可触发。
+3. 在AI IDE 或其他工具中 中打开你的项目，Agent 会自动识别 `.cursor/skills/` 下的 skill；对话时提到「设计规范」「Figma 校验」等即可触发。
 
 ### 方式二：Git Submodule（便于同步更新）
 
