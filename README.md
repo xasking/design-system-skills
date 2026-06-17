@@ -1,4 +1,4 @@
-# 设计系统 Skills（Cursor Agent Skills）
+# 设计系统 Skills
 
 本仓库是 **Agent Skills** 的公共库，供团队在AI coding 中按设计规范生成界面、校验 Figma 设计稿时使用。
 
@@ -10,27 +10,29 @@
 
 ## 团队如何使用
 
+> 说明：下文统一用 `<skills-dir>` 表示你所使用的 AI coding 工具识别 skill 的目录，实际路径以对应工具约定为准。
+
 ### 方式一：复制到本地项目（推荐）
 
 1. 克隆本仓库到本地：
    ```bash
    git clone https://github.com/你的用户名/你的仓库名.git
    ```
-2. 把需要的 skill **整个文件夹** 复制到你项目的 `.cursor/skills/` 下：
+2. 把需要的 skill **整个文件夹** 复制到你项目的 `<skills-dir>/` 下：
    ```bash
-   cp -r 你的仓库名/design-system-index 你的项目/.cursor/skills/
+   cp -r 你的仓库名/design-system-index 你的项目/<skills-dir>/
    ```
-3. 在AI IDE 或其他工具中 中打开你的项目，Agent 会自动识别 `.cursor/skills/` 下的 skill；对话时提到「设计规范」「Figma 校验」等即可触发。
+3. 在 AI IDE 或其他工具中打开你的项目，Agent 会自动识别 `<skills-dir>/` 下的 skill；对话时提到「设计规范」「Figma 校验」等即可触发。
 
 ### 方式二：Git Submodule（便于同步更新）
 
 在你的项目根目录执行：
 
 ```bash
-mkdir -p .cursor/skills
-git submodule add https://github.com/你的用户名/你的仓库名.git .cursor/skills/design-system-skills
-# 把 skill 放到 Cursor 能识别的名字下（若仓库根就是 design-system-index 可做一次 ln 或复制）
-mv .cursor/skills/design-system-skills/design-system-index .cursor/skills/
+mkdir -p <skills-dir>
+git submodule add https://github.com/你的用户名/你的仓库名.git <skills-dir>/design-system-skills
+# 若仓库根下包含 design-system-index，可将该目录移动或复制到最终 skill 目录下
+mv <skills-dir>/design-system-skills/design-system-index <skills-dir>/
 ```
 
 其他成员拉代码后执行：
@@ -39,15 +41,15 @@ mv .cursor/skills/design-system-skills/design-system-index .cursor/skills/
 git submodule update --init
 ```
 
-### 方式三：直接克隆到 .cursor/skills
+### 方式三：直接克隆到技能目录
 
 ```bash
 cd 你的项目
-mkdir -p .cursor/skills
-git clone https://github.com/你的用户名/你的仓库名.git .cursor/skills/design-system-index
+mkdir -p <skills-dir>
+git clone https://github.com/你的用户名/你的仓库名.git <skills-dir>/design-system-index
 # 若仓库根是「设计系统 skills」且内含 design-system-index 文件夹，则克隆后路径应为：
-# .cursor/skills/设计系统skills/design-system-index
-# Cursor 会递归识别 .cursor/skills 下含有 SKILL.md 的目录，因此只要最终 design-system-index 在 .cursor/skills 下即可。
+# <skills-dir>/设计系统skills/design-system-index
+# 只要最终 design-system-index 位于你的工具可识别的 skill 目录下即可。
 ```
 
 ## 仓库结构说明
@@ -78,7 +80,7 @@ design-system-index/     # 设计规范索引 skill
 ## 依赖说明
 
 - 本仓库仅含 Markdown 与简单脚本，无运行时依赖。
-- 使用前请确保项目已在 Cursor 中打开，并已启用 Agent Skills。
+- 使用前请确保你的 AI coding 工具已启用 Skills/Agent Skills 能力。
 
 ## License
 
