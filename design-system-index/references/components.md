@@ -4,6 +4,7 @@
 ## 执行原则
 
 - 优先使用 `@baidu/one-ui` 组件库access样式与主题。
+- 涉及图表时，统一使用 `@baidu/one-charts`，不额外引入其他 React 图表库作为主实现。
 - 当组件库默认样式与设计规范冲突时，**以组件库为准**。
 - 仅在布局层（间距/排版）进行补充，不覆盖组件内部样式。
 
@@ -11,7 +12,7 @@
 
 - "navigation" → Header, Navigation, Breadcrumbs, Tabs
 - "form" → Form, Text input, Select, Checkbox, Radio button, Button
-- "data display" → Table, Card, List, Badge, Avatar
+- "data display" → Table, Card, List, Badge, Avatar, Chart
 - "feedback" → Alert, Toast, Modal, Spinner, Progress bar, Empty state
 - "input" → Text input, Textarea, Select, Combobox, Datepicker, File upload, Slider
 - "overlay" → Modal, Drawer, Popover, Tooltip, Dropdown menu
@@ -56,6 +57,7 @@ Sourced from [component.gallery](https://component.gallery) and enriched with pr
 - [Card](#card)
 - [Carousel](#carousel)
 - [Checkbox](#checkbox)
+- [Chart](#chart)
 - [Datepicker](#datepicker)
 - [Drawer](#drawer)
 - [Dropdown menu](#dropdown-menu)
@@ -578,6 +580,50 @@ A horizontal indicator showing how far a long-running task has progressed toward
 
 ---
 
+## Chart
+
+**Also known as:** Data visualization  ·  Charts
+
+A visualization component set for trends, comparisons, distributions, proportions, and dashboard analytics.
+
+**Implementation rule:**
+- 图表统一使用 OneUI 图表库 [`ONE Charts`](https://one-charts.now.baidu-int.com/components/index)。
+- 图表配色必须与 `references/color-tokens.md` 中的 **Chart Palette / Comparison Pairs** 配合使用，系列色按顺序映射，不跳色、不随机改色。
+- 需要落地开发实现时，优先从 `@baidu/one-charts` 的现有组件选型，不单独封装另一套图表基础库。
+
+**Reference from ONE Charts docs:**
+- 安装：
+```bash
+npm install @baidu/one-charts @baidu/one-ui dls-icons-react echarts less-plugin-dls react react-dom --registry=http://registry.npm.baidu-int.com
+```
+- 引入样式：
+```js
+import '@baidu/one-charts/es/index.css';
+```
+```css
+@import '~@baidu/one-charts/es/index.css';
+```
+- 组件引用示例：
+```jsx
+import {Bar} from '@baidu/one-charts';
+
+<Bar />
+```
+
+**Best practices:**
+- 折线图、柱状图、面积图、饼图/环图、趋势图等优先使用该库现成组件。
+- 同一图表内多系列颜色按 `color-chart-series-1` ~ `color-chart-series-9` 顺序映射。
+- 双系列强语义对比场景，优先使用图表对比色板中的固定组合。
+- 图例、tooltip、坐标轴、dataZoom 等能力优先使用库内能力配置，不在视觉层重复造轮子。
+
+**Common layouts:**
+- Dashboard trend line chart
+- Grouped or stacked bar chart
+- Donut/pie chart for ratio breakdown
+- Overview cards with embedded chart blocks
+
+---
+
 ## Radio button
 
 **Also known as:** Radio  ·  Radio group
@@ -871,4 +917,3 @@ A collapsible, nested hierarchy for browsing structured data like file trees or 
 - Category tree in an e-commerce sidebar
 - Organization chart or reporting hierarchy
 - Table of contents navigation for documentation
-
