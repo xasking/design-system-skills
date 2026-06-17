@@ -112,6 +112,51 @@
 | `color-translucent-9`  | `#111111` |
 | `color-translucent-10` | `#000000` |
 
+### 图表色板 Chart Palette（ACCESS）
+
+> 以下色板来自 Figma 文件「图表样式库」节点 `1152:2`「access主题图表色板」，用于折线图、柱状图、面积图、饼图/环图等多系列图表。
+> **使用规则**：根据指标/系列数量，按顺序取前 N 个颜色；不跳色、不随机重排。若单图超过 9 个系列，不默认循环复用，优先考虑合并维度、分页，或与设计确认是否扩展色板。
+
+| Token | Hex | 说明 |
+| ----- | --- | ---- |
+| `color-chart-series-1` | `#3A5BFD` | 主起始色，等同 `Brand-7` / `Blue-7` |
+| `color-chart-series-2` | `#6EDA2F` | 第二系列色 |
+| `color-chart-series-3` | `#FB8750` | 第三系列色 |
+| `color-chart-series-4` | `#7B75F0` | 第四系列色 |
+| `color-chart-series-5` | `#FFD54D` | 第五系列色 |
+| `color-chart-series-6` | `#58E6F0` | 第六系列色 |
+| `color-chart-series-7` | `#4DAC5A` | 第七系列色 |
+| `color-chart-series-8` | `#FF70AC` | 第八系列色 |
+| `color-chart-series-9` | `#B2B9CD` | 第九系列色，等同 `Gray-5`，适合弱化系列 |
+
+### 图表对比色板 Chart Comparison Pairs（ACCESS）
+
+> 以下对比组合也来自同一节点，用于仅有 2 个系列且语义关系明确的对比图，不替代上方 9 色顺序色板。
+
+| 场景 | 推荐色值 |
+| ---- | -------- |
+| 男女对比等语义类 | `#3A5BFD` + `#FB8750` |
+| `before / after`、一个指标重要另一指标仅作参考 | `#3A5BFD` + `#B2B9CD` |
+
+### 商业 AI 渐变色 Commercial AI Gradients（ACCESS）
+
+> 以下渐变来自 Figma 文件「投放平台 26Q2」节点 `4202:83938`，用于商业 AI、云平台运营位、权益提示、托管升级等需要与白色模块区分的视觉场景。
+> 文字、卡片边框、普通按钮等基础 UI 色仍优先使用上方基础色板；渐变主要用于背景、品牌氛围、主行动按钮或强调文字。
+
+| Token | 用途 | Type | Stops |
+| ------ | ---- | ---- | ----- |
+| `color-gradient-commercial-ai-deep-default` | 深色默认背景 / 强品牌主视觉 | Linear | `0% #33A7FF` → `25.5% #3471FE` → `48.1% #0054E6` → `65.9% #3A5BFD` → `98.5% #8E72FF` |
+| `color-gradient-commercial-ai-deep-hover` | 深色 hover 背景 | Linear | `0% #4DB2FF` → `25.8% #4D82FE` → `43.6% #3471FE` → `63.9% #3975FE` → `98.5% #9D85FF` |
+| `color-gradient-commercial-ai-deep-active` | 深色 active 背景 | Linear | `0% #0080FF` → `25.8% #0054E6` → `37.8% #0054E6` → `63.9% #0054E6` → `98.5% #643DFF` |
+| `color-gradient-commercial-ai-deep-disabled` | 深色禁用背景 / 弱化强品牌视觉 | Linear | `0% #C7E8FF` → `26% #B7DBFF` → `69.2% #B9CFFF` → `98.5% #DDD6FF` |
+| `color-gradient-commercial-ai-medium-border` | 中等强度边框 / 描边氛围 | Linear | `0% #B1DEFF` → `20.2% #9FCAFF` → `63.8% #92B4FF` → `90.9% #C7BAFF` → `98.5% #DDCDFF` |
+| `color-gradient-commercial-ai-medium-background` | 中等强度背景 | Linear | `0% #C7E8FF` → `26% #B7DBFF` → `69.2% #B9CFFF` → `98.5% #DDD6FF` |
+| `color-gradient-commercial-ai-light-default` | 浅色默认背景 / 弥散底色 | Linear | `0% #F7F5FF` → `57.7% #F2F6FF` → `96.6% #F2FBFF` |
+| `color-gradient-commercial-ai-light-hover` | 浅色 hover 背景 | Linear | `0% #F0EBFF` → `57.7% #E5EEFF` → `96.6% #E5F7FF` |
+| `color-gradient-commercial-ai-light-active` | 浅色 active 背景 | Linear | `0% #ECE5FF` → `57.7% #DBE7FF` → `96.6% #DBF3FF` |
+| `color-gradient-commercial-ai-light-disabled` | 浅色禁用背景 | Linear | `0% #F7F5FF` → `57.7% #F2F6FF` → `96.6% #F2FBFF` |
+| `color-gradient-commercial-ai-text` | 商业 AI 强调文字 | Linear | 同 `color-gradient-commercial-ai-deep-default` |
+
 ## ACCESS 使用场景（语义与用法）
 
 ### 语义映射（按颜色家族）
@@ -144,7 +189,15 @@
   - 进度条/步骤条进行中：`Blue-7`
   - 完成：`Green-7`
   - 失败：`Red-7`
+- **图表系列色**：
+  - 多系列图表使用 `color-chart-series-1` ~ `color-chart-series-9`，按指标数量顺序取前 N 个颜色
+  - 双系列对比图若存在明确语义，可优先使用图表对比色板中的固定组合
 - **文本与层级**：
   - 主文本：`Gray-9`（#111111）
   - 次要/说明文本：`Gray-7`
 
+- **商业 AI / 云平台运营位渐变**：
+  - 强品牌背景、主行动按钮：优先使用 `color-gradient-commercial-ai-deep-default`；hover/active 分别使用对应状态 token。
+  - 运营卡片浅背景：优先使用 `color-gradient-commercial-ai-light-default`，需要更明显区分白色模块时可用 `medium-background`。
+  - 卡片边框/描边氛围：优先使用 `color-gradient-commercial-ai-medium-border`；若实现环境不支持渐变描边，退化为 `color-gray-2` / `color-translucent-2`。
+  - 强调文字：可使用 `color-gradient-commercial-ai-text`；正文和标题主色仍遵循 `color-gray-9`。

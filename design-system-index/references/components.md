@@ -541,6 +541,14 @@ A floating panel that appears on click near its trigger element — unlike a too
 - Dismiss when clicking outside or pressing Escape
 - Keep popover content brief — it's not a modal
 
+**Title help icon rule:**
+- 标题栏、卡片标题、区块标题旁的问号说明 icon，统一使用 **Popover**，不使用 `Tooltip`
+- 默认以 **hover** 触发，用于解释标题释义、指标口径、规则说明
+- 问号 icon 与标题文字间距 **4px**
+- 问号 icon 尺寸 **20px**
+- 当标题文字为 `Gray-9` 时，icon 颜色使用 `Gray-5`
+- 内容以简短说明文案为主，不承载复杂操作或多步骤内容
+
 **Common layouts:**
 - Color picker dropdown triggered by a swatch
 - User profile preview card on avatar hover/click
@@ -737,6 +745,9 @@ A structured grid of rows and columns for displaying data — often called a dat
 - Financial ledger with date, description, amount, and running balance
 - Leaderboard table with rank, name, avatar, and score
 
+**批量操作场景**
+-- 当表格第一列为多选操作时，选中其中一行或多行，触发批量操作，通常使用one-ui-pro组件库的BatchToolbar 。注意引用。
+
 ---
 
 ## Tabs
@@ -860,5 +871,4 @@ A collapsible, nested hierarchy for browsing structured data like file trees or 
 - Category tree in an e-commerce sidebar
 - Organization chart or reporting hierarchy
 - Table of contents navigation for documentation
-
 
